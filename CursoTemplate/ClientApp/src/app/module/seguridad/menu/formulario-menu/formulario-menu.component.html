@@ -1,0 +1,57 @@
+<mat-toolbar class="toolModal" fxLayout="row" fxLayoutAlign="space-between center">
+  <span>Menu</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
+    (click)="cerrar()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="formGroup" fxLayout="column" id="formularioUsuario" (submit)="realizarCambios()"
+      fxLayoutGap="15px">
+      <div fxFlex="auto" fxLayout="row" fxLayoutGap="15px">
+        <mat-form-field fxFlex="auto" appearance="legacy">
+          <mat-label>Icono</mat-label>
+          <input matInput placeholder="Icono" formControlName="icono" autocomplete="off">
+          <mat-icon matPrefix>{{this.fg['icono'].value}}</mat-icon>
+          <mat-error>
+            *Campo requerido
+          </mat-error>
+          <mat-hint>Para obtener los icono consulte la url https://fonts.google.com/icons</mat-hint>
+        </mat-form-field>
+
+      </div>
+      <div fxFlex="auto" fxLayout="row" fxLayoutGap="15px">
+        <mat-form-field fxFlex="auto" appearance="legacy">
+          <mat-label>Clave</mat-label>
+          <input matInput placeholder="Clave" formControlName="clave">
+          <mat-error *ngIf="fg['clave'].hasError('required')">
+            *Campo requerido
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex="auto" appearance="legacy">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Nombre" formControlName="nombre" autocomplete="off">
+          <mat-error>
+            *Campo requerido
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-footer fxLayout="row" fxLayoutAlign="end center">
+    <button fxFlex="auto" mat-raised-button color="primary" (click)="cerrar()">
+      <mat-icon>
+        close
+      </mat-icon>
+      Cancelar
+    </button>
+    <button fxFlex="auto" mat-button color="accent" form="formularioUsuario">
+      <mat-icon>
+        save
+      </mat-icon>
+      Agregar
+    </button>
+  </mat-card-footer>
+</mat-card>

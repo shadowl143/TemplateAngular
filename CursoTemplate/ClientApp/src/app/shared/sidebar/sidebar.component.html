@@ -1,0 +1,45 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="example-app-name">Template Angualar y .Net Core</h1>
+    <span class="example-spacer"></span>
+    <button mat-button (click)="cerrarSesion()">
+      <mat-icon>logout</mat-icon>
+      Cerrar Sesion
+    </button>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <!-- <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56"> -->
+    <mat-sidenav #snav [mode]="'side'" [fixedInViewport]="mobileQuery.matches" opened="true" fixedTopGap="56">
+      <mat-nav-list *ngFor="let menu of menus">
+        <a mat-list-item>
+          <mat-icon>{{menu.icono}}</mat-icon>
+         <strong  (click)="mostrarPaginas(menu)"><mat-label>{{menu.nombre}}</mat-label></strong>
+        </a>
+        <div *ngIf="menuAsignado==menu">
+          <div *ngFor="let pagina of paginas">
+            <mat-list-item  *ngIf="pagina.menuId==menu.id">
+              &nbsp;&nbsp;&nbsp;&nbsp;
+              <mat-label (click)="navegarA(pagina.clave)">
+                  <mat-icon>
+                    {{pagina.icon}}
+                  </mat-icon>&nbsp;&nbsp;
+                  <mat-label>{{pagina.nombre}}</mat-label>
+              </mat-label>
+            </mat-list-item>
+          </div>
+        </div>
+
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content style="padding:2% ;">
+    <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

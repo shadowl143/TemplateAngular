@@ -1,0 +1,92 @@
+<mat-toolbar class="toolModal" fxLayout="row" fxLayoutAlign="space-between center"><span>Usuario</span>
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon"
+    (click)="cerrar()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="formGroup" fxLayout="column" id="formularioUsuario" (submit)="realizarCambios()" fxLayoutGap="15px">
+      <div fxFlex="auto" fxLayout="row" fxLayoutGap="15px">
+        <mat-form-field fxFlex="auto" appearance="legacy">
+          <mat-label>Nombre(s)</mat-label>
+          <input matInput placeholder="Nombre" formControlName="nombre">
+          <mat-error *ngIf="fg['nombre'].hasError('required')">
+            *Campo requerido
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex="auto" appearance="legacy">
+          <mat-label>Apellido(s)</mat-label>
+          <input matInput placeholder="Apellido" formControlName="apellido" autocomplete="off">
+          <mat-error>
+            *Campo requerido
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+      <div fxFlex="auto" fxLayout="row" fxLayoutGap="15px">
+        <mat-form-field fxFlex="auto" appearance="legacy">
+          <mat-label>Nombre de usuario</mat-label>
+          <input matInput placeholder="Nombre de usuario" formControlName="nombreUsuario" autocomplete="off">
+          <mat-error *ngIf="fg['nombreUsuario'].hasError('required')">
+            *Campo requerido
+          </mat-error>
+          <mat-error *ngIf="fg['nombreUsuario'].hasError('maxlength')">
+            *Caracteres maximos sobrepasados
+          </mat-error>
+          <mat-error *ngIf="fg['nombreUsuario'].hasError('minlength')">
+            *Minimo 5 caracteres
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field fxFlex="auto" appearance="legacy">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" formControlName="email" autocomplete="off">
+          <mat-error *ngIf="fg['email'].hasError('required')">
+            *Campo requerido
+          </mat-error>
+          <mat-error *ngIf="fg['email'].hasError('email')">
+            *No es un Email
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-checkbox *ngIf="id" #cambiaPass (change)="cambiarPassword(cambiaPass.checked)">Cambiar contraseña</mat-checkbox>
+      </div>
+      <div fxFlex="auto" fxLayout="row" fxLayoutGap="15px" *ngIf="cambioPass">
+
+        <mat-form-field fxFlex="auto" appearance="legacy">
+          <mat-label>Contraseña</mat-label>
+          <input matInput [type]="ocultarPass ? 'password' : 'text'" formControlName="password" autocomplete="off">
+          <button type="button" mat-icon-button matSuffix (click)="ocultarPass = !ocultarPass"
+            [attr.aria-pressed]="ocultarPass">
+            <mat-icon>{{ocultarPass ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Confirmar contraseña</mat-label>
+          <input matInput [type]="ocultarConf ? 'password' : 'text'" formControlName="confPassword" autocomplete="off">
+          <button mat-icon-button matSuffix (click)="ocultarConf = !ocultarConf" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="ocultarConf">
+            <mat-icon>{{ocultarConf ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-footer fxLayout="row" fxLayoutAlign="end center">
+    <button fxFlex="auto" mat-raised-button color="primary" (click)="cerrar()">
+      <mat-icon>
+        close
+      </mat-icon>
+      Cancelar
+    </button>
+    <button fxFlex="auto" mat-button color="accent" form="formularioUsuario">
+      <mat-icon>
+        save
+      </mat-icon>
+      Agregar
+    </button>
+  </mat-card-footer>
+</mat-card>

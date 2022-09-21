@@ -1,0 +1,10 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/ContextoDB/bin/Debug/net6.0
+/ContextoDB/obj
+/CursoTemplate/ClientApp/.angular/cache
+/TemplateApi/bin/Debug/net6.0
+/TemplateApi/obj

@@ -1,0 +1,46 @@
+<mat-toolbar class="toolModal">
+  <h2>Agregar paginas</h2>
+  <div>
+    <button mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+<mat-card>
+  <mat-card-content>
+    <form id="formualariorolusuario" (submit)="guardar()">
+      <section class="example-section">
+        <span class="example-list-section">
+          <mat-checkbox class="example-margin"
+                        [checked]="allComplete"
+                        [color]="task.color"
+                        [indeterminate]="someComplete()"
+                        (change)="setAll($event.checked)">
+            {{task.name}}
+          </mat-checkbox>
+        </span>
+        <span class="example-list-section">
+          <ul>
+            <li *ngFor="let subtask of task.listaPagina">
+              <mat-checkbox [(ngModel)]="subtask.activo" [ngModelOptions]="{standalone: true}"
+                            color="primary"
+                            (ngModelChange)="updateAllComplete()">
+                {{subtask.paginaNombre}}
+              </mat-checkbox>
+            </li>
+          </ul>
+        </span>
+      </section>
+    </form>
+  </mat-card-content>
+   <mat-card-actions fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="15px">
+    <button mat-raised-button color="primary" form="formualariorolusuario" type="submit">
+      <mat-icon>save</mat-icon>
+      Guardar
+    </button>
+    <button mat-raised-button color="secundary">
+      <mat-icon>close</mat-icon>
+      Cerrar
+    </button>
+  </mat-card-actions>
+</mat-card>

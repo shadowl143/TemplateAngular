@@ -1,0 +1,42 @@
+
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #e01a76;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+
+// estas clases son editables por el programador
+.toolCatalogo{
+  color: white;
+  background: linear-gradient(90deg, rgba(21,40,204,0.7651435574229692) 29%,
+  rgba(46,50,231,0.8687850140056023) 55%,
+  rgba(19,70,205,0.8687850140056023) 100%) !important;
+}
+.toolModal{
+  margin-left: -5% !important;
+  margin-top: -5%;
+  width: 110% !important;
+  margin-bottom: 5%;
+  color: white;
+  background: linear-gradient(90deg, rgba(21,40,204,0.7651435574229692) 29%,
+  rgba(46,50,231,0.8687850140056023) 55%,
+  rgba(19,70,205,0.8687850140056023) 100%) !important;
+}
+
+
+
