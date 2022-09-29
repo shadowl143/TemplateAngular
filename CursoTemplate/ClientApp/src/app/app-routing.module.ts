@@ -1,3 +1,4 @@
+import { NoAutorizadoComponent } from './shared/no-autorizado/no-autorizado.component';
 import { NoEncontradoComponent } from './shared/no-encontrado/no-encontrado.component';
 import { CatalogoRolComponent } from './module/catalogo/rol/catalogo-rol/catalogo-rol.component';
 import { GuardianAcceso } from './core/guards/guardina-acceso.service';
@@ -11,6 +12,9 @@ const routes:Routes=[
   {
     path:'Login',
     component:LoginComponent
+  },{
+    path:'NoAutorizado',
+    component:NoAutorizadoComponent
   },
   {
     path:'',

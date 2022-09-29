@@ -19,6 +19,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NoAutorizadoComponent } from './shared/no-autorizado/no-autorizado.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     LoginComponent,
     SidebarComponent,
     NoEncontradoComponent,
+    NoAutorizadoComponent,
     ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
